@@ -1,0 +1,29 @@
+<form #blogForm="ngForm" (ngSubmit)="onSubmit(blogForm)">
+	<input type="hidden" name="$key" #$key=ngModel [(ngModel)]="blogService.selectedBlog.$key">
+	<div class="form-group">
+		<label>Title</label>
+		<input class="form-control" name="title" #name=ngModel [(ngModel)]="blogService.selectedBlog.title" placeholder="Title of the blog" required>
+	</div>
+	<div class="form-group">
+		<label>Topic</label>
+		<input class="form-control" name="topic" #name=ngModel [(ngModel)]="blogService.selectedBlog.topic" placeholder="Topic" required>
+	</div>
+	<div class="form-group">
+		<label>Short Description</label>
+		<input class="form-control" name="shortDesc" #name=ngModel [(ngModel)]="blogService.selectedBlog.shortDesc" placeholder="Short Description">
+	</div>
+	<div class="form-group">
+		<label>Content</label>
+		<app-editor [elementId]="my-editor-id" name="content" #name=ngModel [(ngModel)]="blogService.selectedBlog.content">
+		  </app-editor>
+	</div>
+	<div class="form-group">
+		<label>Date</label>
+		<input class="form-control" name="timestamp" #name=ngModel [(ngModel)]="blogService.selectedBlog.timestamp" required>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-default" [disabled] = "!blogForm.valid">Submit</button>
+		<button type="button" class="btn btn-default" *ngIf="blogService.selectedBlog.$key!=null" (click)="onDelete(blogForm)">Delete</button>
+		<button type="button" class="btn btn-default" (click)="resetForm(blogForm)">Reset</button>
+	</div>
+</form>

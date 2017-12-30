@@ -1,0 +1,7 @@
+<ul class="list-group">
+	<li class="list-group-item hover" *ngFor="let blog of blogList" (click)="onItemClick(blog)">
+		<strong>{{blog.title}}</strong> 
+		<br> {{blog.shortDesc}}
+		<!-- <div [innerHTML]="blog.content"></div> -->
+	</li>
+</ul>
